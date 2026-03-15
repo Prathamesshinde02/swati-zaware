@@ -1,0 +1,186 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileNav = document.querySelector('.mobile-nav');
+    
+    if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('open');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileNav.classList.contains('open')) {
+                icon.classList.remove('bx-menu');
+                icon.classList.add('bx-x');
+            } else {
+                icon.classList.remove('bx-x');
+                icon.classList.add('bx-menu');
+            }
+        });
+
+        // Close mobile nav when clicking a link
+        const mobileLinks = mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('open');
+                mobileMenuBtn.querySelector('i').classList.remove('bx-x');
+                mobileMenuBtn.querySelector('i').classList.add('bx-menu');
+            });
+        });
+    }
+
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        // Active link switching based on scroll position
+        let current = '';
+        const sections = document.querySelectorAll('.section');
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            // Add a little offset for better UX
+            if (scrollY >= (sectionTop - 250)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href').substring(1) === current) {
+                a.classList.add('active');
+            }
+        });
+    });
+
+    // Intersection Observers for Animations
+    
+    // Timeline items visibility
+    const timelineOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in', 'visible');
+                timelineObserver.unobserve(entry.target);
+            }
+        });
+    }, timelineOptions);
+
+    document.querySelectorAll('.timeline-item').forEach((item, index) => {
+        // Add staggered animation delay based on index implicitly via CSS
+        item.style.transitionDelay = `${index * 0.2}s`;
+        timelineObserver.observe(item);
+    });
+
+    // General fade-in elements
+    const fadeOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, fadeOptions);
+
+    document.querySelectorAll('.fade-in').forEach(item => {
+        fadeObserver.observe(item);
+    });
+    
+    // Smooth scrolling for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if(targetId === '#' || !targetId) return;
+            
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                // Account for fixed navbar height
+                const navHeight = navbar.offsetHeight || 80;
+                window.scrollTo({
+                    // Only substract nav height if we are not scrolling to Top/Home exactly 
+                    // or handle it nicely via offset
+                    top: targetId === '#home' ? 0 : targetElement.offsetTop - navHeight + 20,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Photo Upload Logic
+    const photoUpload = document.getElementById('photo-upload');
+    const uploadBtn = document.getElementById('upload-btn');
+    const galleryContainer = document.getElementById('gallery-container');
+
+    if (photoUpload && uploadBtn && galleryContainer) {
+        uploadBtn.addEventListener('click', () => {
+            photoUpload.click();
+        });
+
+        photoUpload.addEventListener('change', function(event) {
+            const files = event.target.files;
+            
+            if (files && files.length > 0) {
+                const placeholderCard = galleryContainer.querySelector('.photo-placeholder-card');
+                if (placeholderCard) {
+                    placeholderCard.style.display = 'none';
+                }
+
+                Array.from(files).forEach(file => {
+                    if (!file.type.match('image.*')) return;
+
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const imgDataUrl = e.target.result;
+                        
+                        const photoCard = document.createElement('div');
+                        photoCard.className = 'photo-card glass-panel hover-tilt visible';
+                        
+                        const deleteBtn = document.createElement('div');
+                        deleteBtn.className = 'delete-photo';
+                        deleteBtn.innerHTML = "<i class='bx bx-trash'></i>";
+                        deleteBtn.title = "Remove Photo";
+                        deleteBtn.onclick = function(ev) {
+                            ev.stopPropagation();
+                            photoCard.remove();
+                            // Show placeholder again if gallery empty
+                            const visibleCards = galleryContainer.querySelectorAll('.photo-card:not(.photo-placeholder-card)');
+                            if (visibleCards.length === 0 && placeholderCard) {
+                                placeholderCard.style.display = 'block';
+                            }
+                        };
+                        
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'img-container';
+                        
+                        const img = document.createElement('img');
+                        img.src = imgDataUrl;
+                        img.alt = 'Uploaded Memory';
+                        
+                        imgContainer.appendChild(img);
+                        imgContainer.appendChild(deleteBtn);
+                        photoCard.appendChild(imgContainer);
+                        
+                        galleryContainer.insertBefore(photoCard, galleryContainer.firstChild);
+                    };
+                    reader.readAsDataURL(file);
+                });
+                
+                photoUpload.value = '';
+            }
+        });
+    }
+});

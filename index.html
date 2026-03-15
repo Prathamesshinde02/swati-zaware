@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swati Madhukar Zaware | Educator & Inspiration</title>
+    <meta name="description" content="A tribute profile website for Swati Madhukar Zaware, honoring her dedicated teaching career and inspirational journey.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <a href="#home" class="logo">SMZ</a>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#photos">Photos</a></li>
+        </ul>
+        <!-- Mobile Menu Toggle -->
+        <div class="mobile-menu-btn">
+            <i class='bx bx-menu'></i>
+        </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#journey">Journey</a>
+        <a href="#photos">Photos</a>
+    </div>
+
+    <main>
+        <section id="home" class="hero section">
+            <div class="hero-content glass-panel">
+                <span class="subtitle">Honoring the life & legacy of</span>
+                <h1 id="hero-name">Swati Madhukar Zaware</h1>
+                <p class="tagline">An Inspiring Educator, A Guiding Light, A Cherished Mother. Her teachings spanned far beyond the classroom, touching the hearts of everyone she met.</p>
+                <div class="action-btns">
+                    <a href="#about" class="btn primary-btn">Discover Her Story</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="hero-image-placeholder glass-panel hover-tilt">
+                    <div class="card-inner">
+                        <i class='bx bx-book-reader'></i>
+                        <h3>Wisdom & Grace</h3>
+                        <p>A lifetime of dedication to shaping futures</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section pt-section section">
+            <div class="section-title fade-in">
+                <h2>About Her</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text glass-panel fade-in slide-right">
+                    <h3>A Life Dedicated to Education</h3>
+                    <p>Swati Madhukar Zaware was a deeply devoted teacher who spent her life nurturing young minds. With unwavering passion, kindness, and profound knowledge, she served as a beacon of light for countless students throughout her career.</p>
+                    <p>Her teaching philosophy extended far beyond standard textbooks—she firmly believed in character building, compassion, and the power of lifelong learning. Her legacy continues to inspire those who had the incredible privilege to be guided by her wisdom.</p>
+                </div>
+                <div class="about-stats fade-in slide-left">
+                    <div class="stat-card glass-panel hover-tilt">
+                        <i class='bx bx-chalkboard' ></i>
+                        <h4>Passionate Educator</h4>
+                        <p>Inspiring Generations</p>
+                    </div>
+                    <div class="stat-card glass-panel hover-tilt">
+                        <i class='bx bx-heart' ></i>
+                        <h4>Guiding Light</h4>
+                        <p>Mentoring with empathy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey" class="journey-section pt-section section">
+            <div class="section-title fade-in">
+                <h2>Her Journey</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-panel">
+                        <h3>Early Inspirations</h3>
+                        <p>A lifelong learner with an intrinsic passion for academics, knowledge, and an eagerness to make a difference in society through education.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-panel">
+                        <h3>Teaching Career</h3>
+                        <p>Dedicated her transformative years to teaching. She was known for her patience and unique ability to make every student feel valued and capable.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-panel">
+                        <h3>Everlasting Legacy</h3>
+                        <p>Fondly remembered not just an educator, but as a guiding light, a mentor, and a deeply loving mother whose impact remains etched in our hearts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="photos" class="photos-section pt-section section">
+            <div class="section-title fade-in">
+                <h2>Cherished Memories</h2>
+                <div class="title-underline"></div>
+            </div>
+            
+            <!-- Permanent Photos Gallery -->
+            <div class="photo-gallery pt-20" id="cherished-memories-gallery">
+                <!-- Images will be injected here dynamically, but we can leave placeholders or a loading state if we want -->
+                 <div id="loading-indicator" class="loading-indicator">
+                    <p class="tagline">Loading cherished memories...</p>
+                 </div>
+            </div>
+        </section>
+
+        <!-- New Memory Folder Section -->
+        <section id="memory-folder" class="memory-folder-section pt-section section">
+            <div class="section-title fade-in">
+                <h2>Memory Folder</h2>
+                <div class="title-underline"></div>
+                <p class="upload-hint mt-large">A special collection of unforgettable moments</p>
+            </div>
+
+            <div class="folder-grid">
+                <!-- Example Folder 1 -->
+                <div class="folder-card glass-panel hover-tilt fade-in">
+                    <div class="folder-icon">
+                        <i class='bx bxs-folder-open'></i>
+                    </div>
+                    <div class="folder-info">
+                        <h3>Family Gatherings</h3>
+                        <p>Dynamic Album</p>
+                    </div>
+                    <a class="folder-link" href="gallery.html?folder=family-gatherings&title=Family+Gatherings">View Album</a>
+                </div>
+
+                <!-- Example Folder 2 -->
+                <div class="folder-card glass-panel hover-tilt fade-in delay-1">
+                    <div class="folder-icon">
+                        <i class='bx bxs-folder-open'></i>
+                    </div>
+                    <div class="folder-info">
+                        <h3>School Events</h3>
+                        <p>Dynamic Album</p>
+                    </div>
+                    <a class="folder-link" href="gallery.html?folder=school-events&title=School+Events">View Album</a>
+                </div>
+
+                <!-- Example Folder 3 -->
+                <div class="folder-card glass-panel hover-tilt fade-in delay-2">
+                    <div class="folder-icon">
+                        <i class='bx bxs-folder-open'></i>
+                    </div>
+                    <div class="folder-info">
+                        <h3>Awards & Honors</h3>
+                        <p>Dynamic Album</p>
+                    </div>
+                    <a class="folder-link" href="gallery.html?folder=awards-honors&title=Awards+%26+Honors">View Album</a>
+                </div>
+            </div>
+
+        </section>
+        
+        <section class="quote-section pt-section section">
+            <div class="glass-panel quote-card fade-in zoom-in">
+                <i class='bx bxs-quote-left quote-icon'></i>
+                <blockquote>"A truly great teacher is hard to find, difficult to part with, and impossible to forget."</blockquote>
+                <p class="quote-author">- Remembering Swati Madhukar Zaware</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content glass-panel">
+            <h2>Swati Madhukar Zaware</h2>
+            <p>Created with <i class='bx bxs-heart' class="heart-icon"></i> in loving memory by her family.</p>
+            <p class="contact-info">
+                <i class='bx bxs-phone'></i>
+                Contact: <a href="tel:9921197618">+91 9921197618</a>
+            </p>
+            <div class="socials">
+                <a href="#home" title="Back to top"><i class='bx bx-up-arrow-alt'></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox for viewing full images inline -->
+    <div class="lightbox" id="lightbox">
+        <i class='bx bx-x lightbox-close' id="lightbox-close"></i>
+        <img src="" alt="Full view" id="lightbox-img">
+    </div>
+
+    <script src="script.js"></script>
+    <script src="gallery.js"></script>
+    <script>
+        // Load the Cherished Memories section dynamically when the page finishes loading
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.loadGalleryImages) {
+                window.loadGalleryImages('cherished-memories', 'cherished-memories-gallery');
+            }
+        });
+    </script>
+</body>
+</html>

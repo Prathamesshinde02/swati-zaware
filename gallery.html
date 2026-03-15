@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Swati Madhukar Zaware</title>
+    <meta name="description" content="Memory gallery of Swati Madhukar Zaware.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">SMZ</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#journey">Journey</a></li>
+            <li><a href="index.html#photos">Photos</a></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <i class='bx bx-menu'></i>
+        </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#journey">Journey</a>
+        <a href="index.html#photos">Photos</a>
+    </div>
+
+    <main>
+        <div class="gallery-header fade-in">
+            <a href="index.html#memory-folder" class="back-link"><i class='bx bx-arrow-back'></i> Back to Memory Folders</a>
+            <h1 id="gallery-title">Gallery</h1>
+            <div class="title-underline"></div>
+            <p class="tagline mt-large" id="gallery-desc">A beautiful collection of memories.</p>
+        </div>
+
+        <section class="photos-section section pt-20">
+            <div id="loading-indicator" class="loading-indicator">
+                <div class="loading-spinner"></div>
+                <p>Loading memories...</p>
+            </div>
+            
+            <div class="photo-gallery" id="dynamic-gallery" class="d-none">
+                <!-- Images will be injected here by JS -->
+            </div>
+            
+            <div id="empty-state" class="empty-state d-none">
+                <i class='bx bx-photo-album'></i>
+                <h3>No photos found</h3>
+                <p>Upload photos to the <b id="folder-name-display"></b> folder on GitHub to see them here.</p>
+                <p class="tagline">For local testing, name your files 1.jpg, 2.jpg, etc. inside the folder.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content glass-panel">
+            <h2>Swati Madhukar Zaware</h2>
+            <p>Created with <i class='bx bxs-heart' class="heart-icon"></i> in loving memory by her family.</p>
+            <div class="socials">
+                <a href="#" title="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})"><i class='bx bx-up-arrow-alt'></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox for viewing full images -->
+    <div class="lightbox" id="lightbox">
+        <i class='bx bx-x lightbox-close' id="lightbox-close"></i>
+        <img src="" alt="Full view" id="lightbox-img">
+    </div>
+
+    <script src="script.js"></script>
+    <script src="gallery.js"></script>
+</body>
+</html>
